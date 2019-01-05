@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>
+Quadratic Equation Art
+</title>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script type=text/javascript>
+	
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	
+	ctx.canvas.height = window.innerHeight - 50;
+	
+	var x = -300;
+	var xCoefficient = 100;
+	var colorIntensity = 0;
+
+	function drawPoint(){
+		for(i=0;i<250;i++){
+			ctx.beginPath();
+			ctx.fillStyle = "rgba("+colorIntensity+",150,"+colorIntensity+",1)";
+			
+			ctx.fillRect(x+300,(xCoefficient*Math.pow(x,2)),3,3);
+			ctx.fill();
+			
+			x++;
+			if(x>canvas.width-300){
+				x=-300;
+				xCoefficient/=1.1;
+				if(colorIntensity<151){
+					colorIntensity+=0.15;
+				}
+			}
+		}
+	}
+		
+	var intervalID = window.setInterval(drawPoint,1);
+
+</script>
+
+</body>
+</html>
